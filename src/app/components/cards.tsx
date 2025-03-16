@@ -4,7 +4,7 @@ export default function Cards() {
       <div className=" text-center text-5xl">Най-добри предложения</div>
 
   
-<div className="grid h-auto grid-cols-3 lg:grid-cols-3 place-items-center gap-4">
+<div className="grid h-auto grid-cols-1 lg:grid-cols-3 place-items-center gap-4">
 <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
   <img className="w-full" src="/img/gothic-girl-4k-re-2048x2048-771658380.jpg" alt="Sunset in the mountains"/>
   <div className="px-6 py-4">
