@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SingUp() {
     return (
       
@@ -5,14 +7,14 @@ export default function SingUp() {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
             
             <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-white">
+                
                 Create a new account
             </h2>
-            <p className="mt-2 text-center text-sm leading-5 text-gray-500 max-w">
-                Or
-                <a href="#"
-                    className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150">
-                    login to your account
-                </a>
+            <p className="mt-2 text-center text-sm leading-5 text-gray-500 max-w ">
+                
+            <Link className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+            href="\SingIn"> login to your account</Link>
+              
             </p>
         </div>
     

@@ -1,14 +1,19 @@
+
+import Link from 'next/link'
+
+
+
 export default function Footer() {
     return (
       <footer className="flex flex-col space-y-10 justify-center pt-10 bg-(--color-topbare)">
 
       <nav className="flex justify-center flex-wrap gap-6 text-gray-500 font-medium">
-          <a className="hover:text-white" href="#">Home</a>
-          <a className="hover:text-white" href="#">About</a>
-          <a className="hover:text-white" href="#">Services</a>
-          <a className="hover:text-white" href="#">Media</a>
-          <a className="hover:text-white" href="#">Gallery</a>
-          <a className="hover:text-white" href="#">Contact</a>
+
+      
+          <Link className="hover:text-white" href="/">Home</Link>
+          <Link className="hover:text-white" href="/about">About</Link>
+          
+         
       </nav>
   
       <div className="flex justify-center space-x-5">

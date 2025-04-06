@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function SingIn() {
     return (
       
@@ -7,10 +8,12 @@ export default function SingIn() {
                 Sign in to your account
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600 max-w ">
-                Or
-                <a href="#" className="font-medium text-blue-600 hover:text-blue-500 white">
-                       create an account
-                </a>
+              
+
+            <Link className="font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+            href="\SignUp">  create an account</Link>
+              
+                
             </p>
         </div>
     
