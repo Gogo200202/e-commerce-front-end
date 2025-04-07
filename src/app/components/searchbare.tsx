@@ -43,7 +43,7 @@ function searchbareIcon(){
         />
         <input
           type="text"
-          onChange={typing }
+          onChange={typing}
           className="h-16 w-1/3 md:w-2/3 lg:w-5/6 flex-none text-black focus:outline-none "
           placeholder="Search branch name..."
           required
@@ -97,7 +97,7 @@ function searchbareIcon(){
 
               <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">
                 Спорт
-              </a>
+              </a>  
 
               <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">
                 Дрехи
