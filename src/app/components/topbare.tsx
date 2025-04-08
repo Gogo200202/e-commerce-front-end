@@ -11,7 +11,7 @@ export default function Topbare() {
           />
        <div className="absolute top-5  right-5 grid grid-cols-2 grid-rows-2 ">
        <Link className="h-10 w-40 border-t-8 border-(--color-topbare) hover:text-gray-500" href="/SignUp" >Създаите профил</Link> 
-       <div className="h-10 w-40 border-t-8 border-(--color-whiteSearchBar)  rounded-md bg-whiteSearchBar   text-black text-center  ">Добави обява </div>      
+       <Link className="h-10 w-40 border-t-8 border-(--color-whiteSearchBar)  rounded-md bg-whiteSearchBar   text-black text-center  hover:text-white " href="/AddProduct">Добави обява </Link>      
        </div>
       
   
