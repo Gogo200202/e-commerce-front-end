@@ -1,34 +1,35 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import React, { useState, useEffect, ChangeEvent } from "react";
 export default function Searchbare() {
+  const router = useRouter();
   const categories = [
-{
-  name:"Електроника",
-  id:0
-},
-{
-  name:"Спорт",
-  id:1
-},
-{
-  name:"Дрехи",
-  id:2
-},
-{
-  name:"Животни",
-  id:3
-},
-{
-  name:"Работа",
-  id:4
-},
-,
-{
-  name:"Недвижими имоти",
-  id:5
-},
-
+    {
+      name: "Електроника",
+      id: 0,
+    },
+    {
+      name: "Спорт",
+      id: 1,
+    },
+    {
+      name: "Дрехи",
+      id: 2,
+    },
+    {
+      name: "Животни",
+      id: 3,
+    },
+    {
+      name: "Работа",
+      id: 4,
+    },
+    ,
+    {
+      name: "Недвижими имоти",
+      id: 5,
+    },
   ];
 
   const [input, setInput] = useState("");
@@ -46,6 +47,7 @@ export default function Searchbare() {
     const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
         console.log(input);
+        router.push("/Search/"+input);
       }
     };
 
@@ -78,13 +80,16 @@ export default function Searchbare() {
             <img className=" h-16 " src="/svg/filter.svg" alt="filter" />
 
             <div className="invisible absolute  z-50 flex  flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
-            
-            {categories.map(function (data) {
-                return <a key={data?.id} className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">
-                {data?.name}
-              </a>;
+              {categories.map(function (data) {
+                return (
+                  <a
+                    key={data?.id}
+                    className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2"
+                  >
+                    {data?.name}
+                  </a>
+                );
               })}
-              
             </div>
           </div>
         </div>
