@@ -1,16 +1,18 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useSearchParams } from 'next/navigation'
 import Searchbare from "@/app/components/searchbare";
 
 export default function Search() {
   const params = useParams<{ slug: string }>();
-
-  console.log(params);
+  const searchParams = useSearchParams();
+  const search = searchParams.get('a')
+  console.log(search);
 
   return (
     <>
-    <Searchbare/  >
+    <Searchbare/>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-white">
           Customers also purchased

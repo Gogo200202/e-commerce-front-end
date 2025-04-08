@@ -33,21 +33,24 @@ export default function Searchbare() {
   ];
 
   const [input, setInput] = useState("");
+  const [location, setLocation] = useState("");
 
   function typing(event: any) {
-    console.log(event.target.value);
     setInput(event.target.value);
   }
 
+  function typingLocation(event: any) {
+    setLocation(event.target.value);
+  }
+
   function searchbareIcon() {
-    console.log(input);
+    router.push("/Search/" + input + "?a=" + location);
   }
 
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
-        console.log(input);
-        router.push("/Search/"+input);
+        router.push("/Search/" + input + "?a=" + location);
       }
     };
 
@@ -56,7 +59,7 @@ export default function Searchbare() {
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
     };
-  }, [input]);
+  }, [input, location]);
 
   return (
     <div className="h-16 w-full border-x-[3vw] border-(--background)   ">
@@ -99,6 +102,7 @@ export default function Searchbare() {
             <img className=" h-16" src="/svg/location.svg" alt="location" />
             <div className="invisible absolute  z-50 flex  flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
               <input
+                onChange={typingLocation}
                 className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                 placeholder="Населено място..."
               />
