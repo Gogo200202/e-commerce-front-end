@@ -1,36 +1,51 @@
 "use client";
 import { useRouter } from "next/navigation";
-
+import { useRef } from "react";
 import React, { useState, useEffect, ChangeEvent } from "react";
-export default function Searchbare() {
+import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+
+function isEmpty(obj: any) {
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+const categories = [
+  {
+    name: "Електроника",
+    id: 0,
+  },
+  {
+    name: "Спорт",
+    id: 1,
+  },
+  {
+    name: "Дрехи",
+    id: 2,
+  },
+  {
+    name: "Животни",
+    id: 3,
+  },
+  {
+    name: "Работа",
+    id: 4,
+  },
+  ,
+  {
+    name: "Недвижими имоти",
+    id: 5,
+  },
+];
+
+let TakeOneThing = true;
+export default function searchable() {
   const router = useRouter();
-  const categories = [
-    {
-      name: "Електроника",
-      id: 0,
-    },
-    {
-      name: "Спорт",
-      id: 1,
-    },
-    {
-      name: "Дрехи",
-      id: 2,
-    },
-    {
-      name: "Животни",
-      id: 3,
-    },
-    {
-      name: "Работа",
-      id: 4,
-    },
-    ,
-    {
-      name: "Недвижими имоти",
-      id: 5,
-    },
-  ];
 
   const [input, setInput] = useState("");
   const [location, setLocation] = useState("");
@@ -44,12 +59,14 @@ export default function Searchbare() {
   }
 
   function searchbareIcon() {
+    TakeOneThing = true;
     router.push("/Search/" + input + "?a=" + location);
   }
 
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
+        TakeOneThing = true;
         router.push("/Search/" + input + "?a=" + location);
       }
     };
@@ -60,6 +77,17 @@ export default function Searchbare() {
       document.removeEventListener("keydown", keyDownHandler);
     };
   }, [input, location]);
+
+  const searchUrl = useParams<{ slug: string }>();
+  const searchParamsURl = useSearchParams();
+  const locationURl = searchParamsURl.get("a");
+
+  if (!isEmpty(searchUrl)) {
+    if (TakeOneThing) {
+      TakeOneThing = false;
+      setInput(searchUrl.slug);
+    }
+  }
 
   return (
     <div className="h-16 w-full border-x-[3vw] border-(--background)   ">
@@ -73,6 +101,7 @@ export default function Searchbare() {
         <input
           type="text"
           onChange={typing}
+          defaultValue={input}
           className="h-16 w-1/3 md:w-2/3 lg:w-5/6 flex-none text-black focus:outline-none "
           placeholder="Search branch name..."
           required

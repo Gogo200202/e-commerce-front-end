@@ -5,10 +5,12 @@ import { useSearchParams } from 'next/navigation'
 import Searchbare from "@/app/components/searchbare";
 
 export default function Search() {
-  const params = useParams<{ slug: string }>();
+  const search = useParams<{ slug: string }>();
+  
   const searchParams = useSearchParams();
-  const search = searchParams.get('a')
-  console.log(search);
+  const location = searchParams.get('a')
+ 
+  
 
   return (
     <>

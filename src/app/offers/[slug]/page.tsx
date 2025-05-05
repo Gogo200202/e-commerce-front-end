@@ -3,10 +3,9 @@
 import { useParams } from "next/navigation";
 import Searchbare from "@/app/components/searchbare";
 
-export default function ExampleClientComponent() {
+export default function Offers() {
   const params = useParams<{ slug: string }>();
 
-  console.log(params);
 
   return (
     <>
