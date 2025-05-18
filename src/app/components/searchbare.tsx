@@ -47,6 +47,10 @@ let TakeOneThing = true;
 export default function searchable() {
   const router = useRouter();
 
+  function pushRoutToAll() {
+    router.push("/Search/" + input + "?a=" + location);
+  }
+
   const [input, setInput] = useState("");
   const [location, setLocation] = useState("");
 
@@ -60,14 +64,15 @@ export default function searchable() {
 
   function searchbareIcon() {
     TakeOneThing = true;
-    router.push("/Search/" + input + "?a=" + location);
+
+    pushRoutToAll();
   }
 
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
         TakeOneThing = true;
-        router.push("/Search/" + input + "?a=" + location);
+        pushRoutToAll();
       }
     };
 
@@ -85,7 +90,8 @@ export default function searchable() {
   if (!isEmpty(searchUrl)) {
     if (TakeOneThing) {
       TakeOneThing = false;
-      setInput(searchUrl.slug);
+      let realUrl = decodeURIComponent(searchUrl.slug);
+      setInput(realUrl);
     }
   }
 

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default async function Cards() {
   interface item {
     _id: number;
@@ -16,7 +18,9 @@ export default async function Cards() {
       <div className="grid h-auto grid-cols-1 lg:grid-cols-3 place-items-center gap-4">
         {items.Items.map((post: item) => (
           <div key={post._id} className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+            <Link href={`/offers/${post._id}`}>
             <img className="w-full" src={post.img} alt="Sunset in the mountains" />
+            </Link>
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2 text-gray-500">
                 {post.name}
