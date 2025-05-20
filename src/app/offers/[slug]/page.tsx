@@ -1,5 +1,7 @@
 'use server'
 
+import Topbare from "@/app/components/topbare";
+
 
 
 
@@ -14,6 +16,7 @@ console.log(  id );
   let img;
   let name;
   let description;
+  let phone;
   try {
 
     const requestOptions = {
@@ -34,12 +37,14 @@ console.log(  id );
    img = data.img;
     name = data.name;
     description = data.description;
+    phone = data.phone;
   } catch (error: any) {
     console.error(error.message);
   }
 
   return (
     <>
+    <Topbare/>
       <div className="grid h-screen place-items-center">
         <div className="h-auto w-[380px] lg:h-2/3 lg:w-2/3 bg-amber-100  rounded-2xl lg:relative ">
           <div className=" mt-10 ml-4 w-[350] lg:w-2/5 ">
@@ -48,11 +53,11 @@ console.log(  id );
               src={img}
               alt="Sunset in the mountains"
             />
-            <div className="text-black">tel:0899123843</div>
+            <div className="text-black">tel:{phone}</div>
           </div>
           <div className="lg:absolute top-1/6 right-0 lg:w-3/6">
             <div className=" m-2 text-black  font-bold  ">{name}</div>
-            <div className="text-black font-bold m-2">Take goriq neshto</div>
+            
             <div className="m-2 text-black">{description}</div>
           </div>
         </div>
