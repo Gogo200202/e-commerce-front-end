@@ -7,8 +7,14 @@ export default async function Cards() {
     name: string;
     description: string;
   }
-
-  const data = await fetch("http://localhost:8080/getAllItems");
+  let data;
+ try{
+data = await fetch("http://localhost:8080/getAllItems");
+ }catch(e:any){
+    return<></>
+ }
+  
+  
   const items: any = await data.json();
 
   return (
