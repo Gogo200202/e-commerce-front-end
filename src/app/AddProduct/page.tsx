@@ -20,16 +20,23 @@ export default function AddProduct() {
   const [description, setDescription] = useState<String>();
   const [name, setName] = useState<string>();
   const [phoneNumber, setPhoneNumber] = useState<string>();
+  const [price, setPrice] = useState<string>();
 
+
+  function AddPrice(event: any) {
+    var input = event.target.value;
+    
+    setPrice(input);
+  }
   function AddProductName(event: any) {
     var input = event.target.value;
-    console.log(input);
-    setDescription(input);
+    
+    setName(input);
   }
 
   function AddProductDescription(event: any) {
     var input = event.target.value;
-    setName(input);
+    setDescription(input);
   }
 
   function AddPhoneNumber(event: any) {
@@ -42,8 +49,6 @@ export default function AddProduct() {
 
     var file = input.files[0];
 
-    //var output = document.getElementById('preview_img');
-
     const img = {
       preview: URL.createObjectURL(event.target.files[0]),
       data: event.target.files[0],
@@ -52,7 +57,6 @@ export default function AddProduct() {
     arr[event.target.id] = img;
 
     setImgs([...arr]);
-
   };
 
   async function onButtonPress(event: any) {
@@ -62,6 +66,7 @@ export default function AddProduct() {
     formData.append("Description", description as string);
     formData.append("Name", name as string);
     formData.append("PhoneNumber", phoneNumber as string);
+    formData.append("Price", price as string);
 
     let response = await fetch("http://localhost:8080/addItem", {
       method: "POST",
@@ -100,6 +105,22 @@ export default function AddProduct() {
               </label>
               <input
                 onChange={AddProductDescription}
+                type="text"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Doe"
+                required
+              />
+            </div>
+
+              <div>
+              <label
+                form="last_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Product price
+              </label>
+              <input
+                onChange={AddPrice}
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Doe"

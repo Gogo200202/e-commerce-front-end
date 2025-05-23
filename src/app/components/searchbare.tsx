@@ -1,9 +1,10 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { useParams } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+
+import { usePathname } from "next/navigation";
 
 function isEmpty(obj: any) {
   for (const prop in obj) {
@@ -91,12 +92,16 @@ export default function searchable() {
     if (TakeOneThing) {
       TakeOneThing = false;
       let realUrl = decodeURIComponent(searchUrl.slug);
-      setInput(realUrl);
+      const pathname = usePathname();
+      if (!pathname.startsWith("/offers")) {
+        setInput(realUrl);
+      }
+      console.log(pathname);
     }
   }
 
   return (
-    <div className="h-16 w-full border-x-[3vw] border-(--background)   ">
+    <div className="  my-5 h-16 w-full border-x-[3vw] border-(--background)   ">
       <div className="bg-whiteSearchBar h-full w-full rounded-md flex">
         <img
           onClick={searchbareIcon}
