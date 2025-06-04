@@ -96,7 +96,7 @@ export default function searchable() {
       if (!pathname.startsWith("/offers")) {
         setInput(realUrl);
       }
-      console.log(pathname);
+    
     }
   }
 

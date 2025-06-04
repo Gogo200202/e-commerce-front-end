@@ -22,15 +22,14 @@ export default function AddProduct() {
   const [phoneNumber, setPhoneNumber] = useState<string>();
   const [price, setPrice] = useState<string>();
 
-
   function AddPrice(event: any) {
     var input = event.target.value;
-    
+
     setPrice(input);
   }
   function AddProductName(event: any) {
     var input = event.target.value;
-    
+
     setName(input);
   }
 
@@ -112,7 +111,7 @@ export default function AddProduct() {
               />
             </div>
 
-              <div>
+            <div>
               <label
                 form="last_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
