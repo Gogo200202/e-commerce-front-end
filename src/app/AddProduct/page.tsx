@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
 //import { revalidatePath } from "next/cache";
+import { getJwt, getName } from "../_actions/cookie";
 
 class img {
   preview: any =
@@ -66,11 +67,16 @@ export default function AddProduct() {
     formData.append("Name", name as string);
     formData.append("PhoneNumber", phoneNumber as string);
     formData.append("Price", price as string);
-
+    let jwt = await getJwt();
+    console.log(jwt?.value);
     let response = await fetch("http://localhost:8080/addItem", {
       method: "POST",
       body: formData,
+      headers: {
+        gfg_token_header_key: jwt?.value,
+      },
     });
+    console.log(response.headers);
 
     redirect(`/`);
   }
