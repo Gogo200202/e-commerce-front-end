@@ -49,7 +49,7 @@ export default function searchable() {
   const router = useRouter();
 
   function pushRoutToAll() {
-    router.push("/Search/" + input + "?a=" + location);
+    router.push("/Search/" + input + "/" + location);
   }
 
   const [input, setInput] = useState("");
@@ -85,18 +85,15 @@ export default function searchable() {
   }, [input, location]);
 
   const searchUrl = useParams<{ slug: string }>();
-  const searchParamsURl = useSearchParams();
-  const locationURl = searchParamsURl.get("a");
 
   if (!isEmpty(searchUrl)) {
     if (TakeOneThing) {
       TakeOneThing = false;
-      let realUrl = decodeURIComponent(searchUrl.slug);
+      let realUrl = decodeURIComponent(searchUrl.slug[0]);
       const pathname = usePathname();
       if (!pathname.startsWith("/offers")) {
         setInput(realUrl);
       }
-    
     }
   }
 

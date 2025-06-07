@@ -1,7 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 async function createCookie(username: string, Jwt: string) {
-  "use server";
+
   const cookieStore = await cookies();
   cookieStore.set({
     name: "JWT",
@@ -16,7 +16,7 @@ async function createCookie(username: string, Jwt: string) {
 }
 
 async function checkIfLogIn() {
-  "use server";
+ 
   const cookieStore = await cookies();
 
   if (cookieStore.get("JWT") != null) {
@@ -27,7 +27,7 @@ async function checkIfLogIn() {
 }
 
 async function getJwt() {
-  "use server";
+
   const cookieStore = await cookies();
 
   return cookieStore.get("JWT")
@@ -35,7 +35,7 @@ async function getJwt() {
 
 
 async function getName() {
-  "use server";
+
   const cookieStore = await cookies();
 
   return cookieStore.get("name")
