@@ -1,3 +1,4 @@
+import { console } from "inspector";
 import { getJwt, getName } from "../_actions/cookie";
 import CardSearch from "../components/cardsSearch";
 import Topbare from "../components/topbare";
@@ -46,19 +47,20 @@ export default async function MyProducts() {
       "http://localhost:8080/getById",
       requestOptions
     );
+
     let dataNew = await response.json();
+    
+    if (dataNew.item != null) {
+      let currentItems = new item(
+        dataNew.item._id,
+        dataNew.item.img,
+        dataNew.item.name,
+        dataNew.item.description,
+        dataNew.item.price
+      );
 
-
-
-    let currentItems = new item(
-      dataNew.item._id,
-      dataNew.item.img,
-      dataNew.item.name,
-      dataNew.item.description,
-      dataNew.item.price
-    );
-
-    items.push(currentItems);
+      items.push(currentItems);
+    }
   }
 
   return (

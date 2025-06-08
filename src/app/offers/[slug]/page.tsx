@@ -1,16 +1,18 @@
 "use server";
-
+import { getJwt } from "@/app/_actions/cookie";
 import Topbare from "@/app/components/topbare";
 import Searchbare from "@/app/components/searchbare";
+import DeleteButton from "@/app/components/deleteButton"
 export default async function Offers({ params }: { params: { slug: string } }) {
   const slug = await params;
   let id: string = await slug.slug;
-
+  let jwt = await getJwt();
   let img;
   let name;
   let description;
   let phone;
   let price;
+
   try {
     const requestOptions = {
       method: "POST",
@@ -36,12 +38,44 @@ export default async function Offers({ params }: { params: { slug: string } }) {
   } catch (error: any) {
     console.error(error.message);
   }
+  let IsYours=false;
+  try {
+  
+
+    const myHeaders = new Headers();
+    myHeaders.append("gfg_token_header_key", jwt!?.value);
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      _id: id,
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    const response = await fetch(
+      "http://localhost:8080/user/checkIfItemBelongsToUser",
+      requestOptions
+    );
+   
+
+    let data = await response.json();
+    IsYours = data.IsYours;
+  
+  } catch (error: any) {
+    console.error(error.message);
+  }
+
 
   return (
     <>
       <Topbare />
       <Searchbare />
-
+     <DeleteButton  Id={id} Jwt={jwt?.value} IsYours={IsYours}></DeleteButton>
       <div className=" md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
         <div className="xl:w-2/6 lg:w-2/5 w-80 md:block ">
           <img className="w-full" alt="image of a girl posing" src={img} />
