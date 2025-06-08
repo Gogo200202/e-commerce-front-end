@@ -5,6 +5,7 @@ interface item {
   img: string;
   name: string;
   description: string;
+  price:string;
 }
 export default async function CardSearch(props: item[]) {
   let items = props.data;
@@ -33,7 +34,7 @@ export default async function CardSearch(props: item[]) {
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">Black</p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">$35</p>
+                  <p className="text-sm font-medium text-white-900">${post.price}</p>
                 </div>
               </div>
             </Link>

@@ -1,16 +1,25 @@
 import { getJwt, getName } from "../_actions/cookie";
 import CardSearch from "../components/cardsSearch";
+import Topbare from "../components/topbare";
 export default async function MyProducts() {
   class item {
     _id: string;
     img: string;
     name: string;
     description: string;
-    constructor(Id: string, Img: string, Name: string, Description: string) {
+    price: string;
+    constructor(
+      Id: string,
+      Img: string,
+      Name: string,
+      Description: string,
+      Price: string
+    ) {
       this._id = Id;
       this.img = Img;
       this.name = Name;
       this.description = Description;
+      this.price = Price;
     }
   }
 
@@ -39,19 +48,22 @@ export default async function MyProducts() {
     );
     let dataNew = await response.json();
 
-    console.log(dataNew.item.name);
+
 
     let currentItems = new item(
       dataNew.item._id,
       dataNew.item.img,
       dataNew.item.name,
-      dataNew.item.description
+      dataNew.item.description,
+      dataNew.item.price
     );
-    console.log(dataNew.item._id);
+
     items.push(currentItems);
   }
+
   return (
     <>
+      <Topbare />
       <h2 className="text-2xl font-bold tracking-tight text-white">
         Customers products
       </h2>
