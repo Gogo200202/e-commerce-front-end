@@ -3,6 +3,7 @@ import { getJwt } from "@/app/_actions/cookie";
 import Topbare from "@/app/components/topbare";
 import Searchbare from "@/app/components/searchbare";
 import DeleteButton from "@/app/components/deleteButton"
+import LikeItemButton from "@/app/components/likeItemButton";
 export default async function Offers({ params }: { params: { slug: string } }) {
   const slug = await params;
   let id: string = await slug.slug;
@@ -70,12 +71,15 @@ export default async function Offers({ params }: { params: { slug: string } }) {
     console.error(error.message);
   }
 
+  let didYouLikedIt=true;
+
 
   return (
     <>
       <Topbare />
       <Searchbare />
      <DeleteButton  Id={id} Jwt={jwt?.value} IsYours={IsYours}></DeleteButton>
+     <LikeItemButton Id={id} Jwt={jwt?.value} DidYouLikedIt={didYouLikedIt} ></LikeItemButton>
       <div className=" md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
         <div className="xl:w-2/6 lg:w-2/5 w-80 md:block ">
           <img className="w-full" alt="image of a girl posing" src={img} />
