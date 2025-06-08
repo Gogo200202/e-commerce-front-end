@@ -2,7 +2,7 @@
 import { getJwt } from "@/app/_actions/cookie";
 import Topbare from "@/app/components/topbare";
 import Searchbare from "@/app/components/searchbare";
-import DeleteButton from "@/app/components/deleteButton"
+import DeleteButton from "@/app/components/deleteButton";
 import LikeItemButton from "@/app/components/likeItemButton";
 export default async function Offers({ params }: { params: { slug: string } }) {
   const slug = await params;
@@ -39,10 +39,8 @@ export default async function Offers({ params }: { params: { slug: string } }) {
   } catch (error: any) {
     console.error(error.message);
   }
-  let IsYours=false;
+  let IsYours = false;
   try {
-  
-
     const myHeaders = new Headers();
     myHeaders.append("gfg_token_header_key", jwt!?.value);
     myHeaders.append("Content-Type", "application/json");
@@ -62,24 +60,48 @@ export default async function Offers({ params }: { params: { slug: string } }) {
       "http://localhost:8080/user/checkIfItemBelongsToUser",
       requestOptions
     );
-   
 
     let data = await response.json();
     IsYours = data.IsYours;
-  
   } catch (error: any) {
     console.error(error.message);
   }
 
-  let didYouLikedIt=true;
+  let didYouLikedIt;
+
+  const myHeaders = new Headers();
+  myHeaders.append("gfg_token_header_key", jwt!?.value);
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    _id: id,
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  let fetchIsItLiked = await fetch(
+    "http://localhost:8080/user/checkIfUserLikedThisItem",
+    requestOptions
+  );
+  let isItLiked = await fetchIsItLiked.json();
 
 
+  didYouLikedIt = isItLiked.IsItLiked;
   return (
     <>
       <Topbare />
       <Searchbare />
-     <DeleteButton  Id={id} Jwt={jwt?.value} IsYours={IsYours}></DeleteButton>
-     <LikeItemButton Id={id} Jwt={jwt?.value} DidYouLikedIt={didYouLikedIt} ></LikeItemButton>
+      <DeleteButton Id={id} Jwt={jwt?.value} IsYours={IsYours}></DeleteButton>
+      <LikeItemButton
+        Id={id}
+        Jwt={jwt?.value}
+        DidYouLikedIt={didYouLikedIt}
+      ></LikeItemButton>
       <div className=" md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
         <div className="xl:w-2/6 lg:w-2/5 w-80 md:block ">
           <img className="w-full" alt="image of a girl posing" src={img} />

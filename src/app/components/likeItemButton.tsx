@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
+
 export default function LikeItemButton(props: any) {
+  let [liked, setLiked] = useState(props.DidYouLikedIt);
+
   async function LikeButton() {
+    setLiked(true);
     const myHeaders = new Headers();
-    myHeaders.append(
-      "gfg_token_header_key",props.Jwt
-  );
+    myHeaders.append("gfg_token_header_key", props.Jwt);
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
@@ -25,14 +28,39 @@ export default function LikeItemButton(props: any) {
       .catch((error) => console.error(error));
   }
 
+  async function DisLikeButton() {
+    setLiked(false);
+    const myHeaders = new Headers();
+    myHeaders.append("gfg_token_header_key", props.Jwt);
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      _id: props.Id,
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:8080/user/userDisLikedItem", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+  }
+
   return (
     <>
-      {props.DidYouLikedIt ? (
+      {liked ? (
+        <div>
+          <button onClick={DisLikeButton}>dislike button</button>
+        </div>
+      ) : (
         <div>
           <button onClick={LikeButton}>like button</button>
         </div>
-      ) : (
-        <div></div>
       )}
     </>
   );
