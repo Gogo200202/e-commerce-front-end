@@ -1,6 +1,6 @@
 import Topbare from "./components/topbare";
 import Searchbare from "./components/searchbare";
-import Cards from "./components/cards";
+import Cards from "./components/cardsTopSell";
 import Footer from "./components/footer";
 
 export default async function Home() {

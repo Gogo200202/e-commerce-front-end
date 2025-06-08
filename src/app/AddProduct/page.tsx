@@ -68,7 +68,6 @@ export default function AddProduct() {
     formData.append("PhoneNumber", phoneNumber as string);
     formData.append("Price", price as string);
     let jwt = await getJwt();
-    console.log(jwt?.value);
     let response = await fetch("http://localhost:8080/addItem", {
       method: "POST",
       body: formData,
@@ -76,7 +75,7 @@ export default function AddProduct() {
         gfg_token_header_key: jwt?.value,
       },
     });
-    console.log(response.headers);
+    
 
     redirect(`/`);
   }
