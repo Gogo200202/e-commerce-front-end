@@ -27,6 +27,12 @@ export default async function Topbare() {
               Моите продукти 
             </Link>
             <Link
+              className="h-10 w-40 border-t-8 border-(--color-topbare) hover:text-gray-500"
+              href="/myLIkedProducts"
+            >
+              Моите харесани продукти 
+            </Link>
+            <Link
               className="h-10 w-40 border-t-8 border-(--color-whiteSearchBar)  rounded-md bg-whiteSearchBar   text-black text-center  hover:text-white "
               href="/AddProduct"
             >

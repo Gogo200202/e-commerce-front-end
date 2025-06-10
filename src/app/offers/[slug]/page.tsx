@@ -90,7 +90,6 @@ export default async function Offers({ params }: { params: { slug: string } }) {
   );
   let isItLiked = await fetchIsItLiked.json();
 
-
   didYouLikedIt = isItLiked.IsItLiked;
   return (
     <>

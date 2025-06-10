@@ -67,7 +67,7 @@ export default async function myLikedProducts() {
     <>
       <Topbare />
       <h2 className="text-2xl font-bold tracking-tight text-white">
-        Customers products
+        Customers liked products
       </h2>
 
       <CardSearch data={items} />
