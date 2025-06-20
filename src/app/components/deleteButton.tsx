@@ -36,8 +36,8 @@ export default function DeleteButton(props: any) {
   return (
     <>
       {props.IsYours ? (
-        <div>
-          <button onClick={DeleteButton}>delete Button</button>
+        <div className="bg-transparent hover:bg-white font-semibold hover:text-white  border border-white hover:border-transparent rounded">
+          <button  onClick={DeleteButton} ><img src="/svg/trash-can.svg" alt="like" /></button>
         </div>
       ) : (
         <div></div>

@@ -12,11 +12,11 @@ class img {
 export default function AddProduct() {
   const [Imgs, setImgs] = useState<img[]>([
     new img(),
-    new img(),
-    new img(),
-    new img(),
-    new img(),
-    new img(),
+    // new img(),
+    // new img(),
+    // new img(),
+    // new img(),
+    // new img(),
   ]);
   const [description, setDescription] = useState<String>();
   const [name, setName] = useState<string>();
@@ -162,7 +162,7 @@ export default function AddProduct() {
               </div>
               <input type="file" id="0" onChange={loadFile} hidden />
             </label>
-            <label className="h-2/4 w-2/4">
+            {/* <label className="h-2/4 w-2/4">
               <img
                 src={Imgs[1].preview}
                 alt="upload icon"
@@ -221,7 +221,7 @@ export default function AddProduct() {
                 <h4>Upload a file</h4>
               </div>
               <input type="file" id="5" onChange={loadFile} hidden />
-            </label>
+            </label> */}
           </div>
 
           <div className="flex items-start mb-6">

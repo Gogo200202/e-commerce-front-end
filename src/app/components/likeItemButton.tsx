@@ -55,11 +55,11 @@ export default function LikeItemButton(props: any) {
     <>
       {liked ? (
         <div>
-          <button onClick={DisLikeButton}><img src="/svg/heart-alt-svgrepo-com.svg" alt="like" /></button>
+          <button onClick={DisLikeButton}><img src="/svg/heart-svgrepo-com.svg" alt="Dislike" /></button>
         </div>
       ) : (
         <div>
-          <button onClick={LikeButton}> 	<img src="/svg/heart-svgrepo-com.svg" alt="like" /></button>
+          <button onClick={LikeButton}> 	<img src="/svg/heart-alt-svgrepo-com.svg" alt="like" /></button>
         </div>
       )}
     </>

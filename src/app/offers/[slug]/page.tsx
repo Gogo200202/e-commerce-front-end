@@ -95,12 +95,18 @@ export default async function Offers({ params }: { params: { slug: string } }) {
     <>
       <Topbare />
       <Searchbare />
-      <DeleteButton Id={id} Jwt={jwt?.value} IsYours={IsYours}></DeleteButton>
 
       <div className=" md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
         <div className="xl:w-2/6 lg:w-2/5 w-80 md:block ">
           <div className=" relative">
             <img className="w-full" alt="image of a girl posing" src={img} />
+            <div className="absolute  top-3 right-3 h-10 w-11 " >
+              <DeleteButton
+                Id={id}
+                Jwt={jwt?.value}
+                IsYours={IsYours}
+              ></DeleteButton>
+            </div>
             <div className=" absolute  bottom-3 right-3 h-10 w-11 ">
               <LikeItemButton
                 Id={id}
