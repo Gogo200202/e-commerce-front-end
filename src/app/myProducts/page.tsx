@@ -67,7 +67,7 @@ export default async function MyProducts() {
     <>
       <Topbare />
       <h2 className="text-2xl font-bold tracking-tight text-white">
-        Customers products
+       Мойте продукти
       </h2>
 
       <CardSearch data={items} />

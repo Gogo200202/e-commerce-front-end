@@ -32,7 +32,7 @@ export default async function CardSearch(props: item[]) {
                       ></span>
                       {post.name}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">Black</p>
+                   
                   </div>
                   <p className="text-sm font-medium text-white-900">${post.price}</p>
                 </div>

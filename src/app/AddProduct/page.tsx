@@ -75,7 +75,6 @@ export default function AddProduct() {
         gfg_token_header_key: jwt?.value,
       },
     });
-    
 
     redirect(`/`);
   }
@@ -90,7 +89,7 @@ export default function AddProduct() {
                 form="first_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Product name
+                Име на продукта
               </label>
               <input
                 onChange={AddProductName}
@@ -105,7 +104,7 @@ export default function AddProduct() {
                 form="last_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Product description
+                Описание на продукта
               </label>
               <input
                 onChange={AddProductDescription}
@@ -121,7 +120,7 @@ export default function AddProduct() {
                 form="last_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Product price
+                Цена
               </label>
               <input
                 onChange={AddPrice}
@@ -137,7 +136,7 @@ export default function AddProduct() {
                 form="phone"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Phone number
+                Телефонне номер
               </label>
               <input
                 //type="tel"
@@ -158,7 +157,7 @@ export default function AddProduct() {
                 height="512"
               />
               <div>
-                <h4>Upload a file</h4>
+                Качете снимка
               </div>
               <input type="file" id="0" onChange={loadFile} hidden />
             </label>
@@ -238,12 +237,12 @@ export default function AddProduct() {
               form="remember"
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
-              I agree with the{" "}
+              Съгласен съм с{" "}
               <a
                 href="#"
                 className="text-blue-600 hover:underline dark:text-blue-500"
               >
-                terms and conditions
+                Общи условия
               </a>
               .
             </label>

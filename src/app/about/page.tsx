@@ -1,7 +1,9 @@
 //import React, { useState, useEffect } form 'react'
-
+import Footer from "../components/footer";
+import Topbare from "../components/topbare";
 export default async function about() {
   return (
+    <><Topbare />
     <div className="grid h-screen w-screen place-items-center">
       <section className="bg-black">
         <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -36,5 +38,8 @@ export default async function about() {
         </div>
       </section>
     </div>
+    <Footer />
+  </>
+     
   );
 }
