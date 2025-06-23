@@ -12,7 +12,7 @@ export default async function Topbare() {
     <div className="h-50 md:h-24   bg-topbare relative">
       <Link href="/">
         <img
-          className=" h-50 md:h-16 absolute  bottom-5 left-5"
+          className=" h-4/5  md:h-16 absolute  bottom-5 left-5"
           src="/svg/ecommerce.svg"
         />
       </Link>

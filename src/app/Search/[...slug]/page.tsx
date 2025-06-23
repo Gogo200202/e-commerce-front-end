@@ -1,6 +1,7 @@
 "use server";
 
 import CardSearch from "@/app/components/cardsSearch";
+import Footer from "@/app/components/footer";
 
 import Searchbare from "@/app/components/searchbare";
 
@@ -35,11 +36,13 @@ export default async function Search({ params }) {
     <>
       <Topbare />
       <Searchbare />
-      <h2 className="text-2xl font-bold tracking-tight text-white">
-        Customers also purchased
+      <h2 className=" h-screen text-2xl font-bold tracking-tight text-white">
+        Продукти за търсене
+      <CardSearch data={items.items} />
+      
       </h2>
 
-      <CardSearch data={items.items} />
+      <Footer/>
     </>
   );
 }
