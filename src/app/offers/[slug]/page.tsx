@@ -157,23 +157,6 @@ export default async function Offers({ params }: { params: { slug: string } }) {
       </div>
       <Footer/>
 
-      {/* <div className="grid h-screen place-items-center">
-        <div className="h-auto w-[380px] lg:h-2/3 lg:w-2/3 bg-amber-100  rounded-2xl lg:relative ">
-          <div className=" mt-10 ml-4 w-[350] lg:w-2/5 ">
-            <img
-              className=" rounded-2xl"
-              src={img}
-              alt="Sunset in the mountains"
-            />
-            <div className="text-black">tel:{phone}</div>
-          </div>
-          <div className="lg:absolute top-1/6 right-0 lg:w-3/6">
-            <div className=" m-2 text-black  font-bold  ">{description}</div>
-
-            <div className="m-2 text-black">{name}</div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

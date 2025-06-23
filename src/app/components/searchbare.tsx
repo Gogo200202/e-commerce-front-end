@@ -1,8 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+
 
 import { usePathname } from "next/navigation";
 
@@ -16,33 +16,7 @@ function isEmpty(obj: any) {
   return true;
 }
 
-const categories = [
-  {
-    name: "Електроника",
-    id: 0,
-  },
-  {
-    name: "Спорт",
-    id: 1,
-  },
-  {
-    name: "Дрехи",
-    id: 2,
-  },
-  {
-    name: "Животни",
-    id: 3,
-  },
-  {
-    name: "Работа",
-    id: 4,
-  },
-  ,
-  {
-    name: "Недвижими имоти",
-    id: 5,
-  },
-];
+
 
 let TakeOneThing = true;
 export default function searchable() {

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { it } from "node:test";
 interface item {
   _id: number;
   img: string;

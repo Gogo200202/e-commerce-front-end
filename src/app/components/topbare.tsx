@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { checkIfLogIn, deleteAll, getName } from "../_actions/cookie";
-import { redirect } from "next/dist/server/api-utils";
+import { checkIfLogIn, getName } from "../_actions/cookie";
 
 export default async function Topbare() {
   let logedIN = await checkIfLogIn();

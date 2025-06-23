@@ -13,11 +13,6 @@ class img {
 export default function AddProduct() {
   const [Imgs, setImgs] = useState<img[]>([
     new img(),
-    // new img(),
-    // new img(),
-    // new img(),
-    // new img(),
-    // new img(),
   ]);
   const [description, setDescription] = useState<String>();
   const [name, setName] = useState<string>();
@@ -138,11 +133,9 @@ export default function AddProduct() {
                   Телефонне номер
                 </label>
                 <input
-                  //type="tel"
                   onChange={AddPhoneNumber}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="123-45-678"
-                  //  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                   required
                 />
               </div>
@@ -158,66 +151,6 @@ export default function AddProduct() {
                 <div>Качете снимка</div>
                 <input type="file" id="0" onChange={loadFile} hidden />
               </label>
-              {/* <label className="h-2/4 w-2/4">
-              <img
-                src={Imgs[1].preview}
-                alt="upload icon"
-                width="512"
-                height="512"
-              />
-              <div>
-                <h4>Upload a file</h4>
-              </div>
-              <input type="file" id="1" onChange={loadFile} hidden />
-            </label>
-            <label className="h-2/4 w-2/4">
-              <img
-                src={Imgs[2].preview}
-                alt="upload icon"
-                width="512"
-                height="512"
-              />
-              <div>
-                <h4>Upload a file</h4>
-              </div>
-              <input type="file" id="2" onChange={loadFile} hidden />
-            </label>
-            <label className="h-2/4 w-2/4">
-              <img
-                src={Imgs[3].preview}
-                alt="upload icon"
-                width="512"
-                height="512"
-              />
-              <div>
-                <h4>Upload a file</h4>
-              </div>
-              <input type="file" id="3" onChange={loadFile} hidden />
-            </label>
-            <label className="h-2/4 w-2/4">
-              <img
-                src={Imgs[4].preview}
-                alt="upload icon"
-                width="512"
-                height="512"
-              />
-              <div>
-                <h4>Upload a file</h4>
-              </div>
-              <input type="file" id="4" onChange={loadFile} hidden />
-            </label>
-            <label className="h-2/4 w-2/4">
-              <img
-                src={Imgs[5].preview}
-                alt="upload icon"
-                width="512"
-                height="512"
-              />
-              <div>
-                <h4>Upload a file</h4>
-              </div>
-              <input type="file" id="5" onChange={loadFile} hidden />
-            </label> */}
             </div>
 
             <div className="flex items-start mb-6">

@@ -4,6 +4,10 @@ import { useState } from "react";
 
 export default function LikeItemButton(props: any) {
   let [liked, setLiked] = useState(props.DidYouLikedIt);
+  let UserOrNot = false;
+  if (props.Jwt != null) {
+    UserOrNot = true;
+  }
 
   async function LikeButton() {
     setLiked(true);
@@ -53,14 +57,22 @@ export default function LikeItemButton(props: any) {
 
   return (
     <>
-      {liked ? (
-        <div>
-          <button onClick={DisLikeButton}><img src="/svg/heart-svgrepo-com.svg" alt="Dislike" /></button>
-        </div>
+      {UserOrNot ? (
+        liked ? (
+          <div>
+            <button onClick={DisLikeButton}>
+              <img src="/svg/heart-svgrepo-com.svg" alt="Dislike" />
+            </button>
+          </div>
+        ) : (
+          <div>
+            <button onClick={LikeButton}>
+              <img src="/svg/heart-alt-svgrepo-com.svg" alt="like" />
+            </button>
+          </div>
+        )
       ) : (
-        <div>
-          <button onClick={LikeButton}> 	<img src="/svg/heart-alt-svgrepo-com.svg" alt="like" /></button>
-        </div>
+        <></>
       )}
     </>
   );
