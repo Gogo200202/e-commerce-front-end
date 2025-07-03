@@ -8,14 +8,14 @@ interface item {
 export default async function Cards(props: item[]) {
   
   let items=props.data;
- 
+ let newitems=items.Items.slice(0,6)
 
   return (
     <div>
-      <div className=" text-center text-5xl">Най-добри предложения</div>
+      <div className=" text-center text-5xl">Най-новите предложения</div>
 
       <div className="grid h-auto grid-cols-1 lg:grid-cols-3 place-items-center gap-4">
-        {items.Items.map((post: item) => (
+        {newitems.map((post: item) => (
           <div
             key={post._id}
             className="max-w-sm rounded overflow-hidden shadow-lg bg-white"

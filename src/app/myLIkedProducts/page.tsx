@@ -1,6 +1,7 @@
 
 import { getJwt } from "../_actions/cookie";
 import CardSearch from "../components/cardsSearch";
+import Footer from "../components/footer";
 import Topbare from "../components/topbare";
 export default async function myLikedProducts() {
   class item {
@@ -70,7 +71,8 @@ export default async function myLikedProducts() {
         Харесани продукти
       </h2>
 
-      <CardSearch data={items} />
+      <CardSearch data={JSON.stringify(items)} />
+      <Footer></Footer>
     </>
   );
 }

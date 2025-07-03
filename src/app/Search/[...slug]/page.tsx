@@ -33,9 +33,9 @@ export default async function Search({ params }) {
     <>
       <Topbare />
       <Searchbare />
-      <h2 className=" h-screen text-2xl font-bold tracking-tight text-white">
+      <h2 className=" text-2xl font-bold tracking-tight text-white">
         Продукти за търсене
-        <CardSearch data={items.items} />
+        <CardSearch data={JSON.stringify(items.items)} />
       </h2>
 
       <Footer />

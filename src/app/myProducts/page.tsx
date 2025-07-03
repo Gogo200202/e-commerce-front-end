@@ -1,6 +1,7 @@
 
 import { getJwt, getName } from "../_actions/cookie";
 import CardSearch from "../components/cardsSearch";
+import Footer from "../components/footer";
 import Topbare from "../components/topbare";
 export default async function MyProducts() {
   
@@ -71,7 +72,8 @@ export default async function MyProducts() {
        Мойте продукти
       </h2>
 
-      <CardSearch data={items} />
+      <CardSearch data={JSON.stringify(items)} />
+       <Footer></Footer>
     </>
   );
 }
