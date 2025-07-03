@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
-//import { revalidatePath } from "next/cache";
 import { getJwt, getName } from "../_actions/cookie";
 import Footer from "../components/footer";
 
@@ -78,7 +77,7 @@ export default function AddProduct() {
   return (
     <>
       <div className="grid h-screen place-items-center">
-        <div className=" h-4/6 w-4/6 ">
+        <div className="h-4/6 w-4/6">
           <form>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>

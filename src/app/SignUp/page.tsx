@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import { redirect } from "next/navigation";
 import Footer from "../components/footer";
-import Topbare from "../components/topbare";
+
 
 export default function SingUp() {
   let [password, setPassword] = useState<string>("");

@@ -20,8 +20,7 @@ export default function SingIn() {
 
   async function ButtonClick(e: any) {
     e.preventDefault();
-    console.log(name);
-    console.log(password);
+
     const fetchData = async () => {
       const requestOptions = {
         method: "POST",

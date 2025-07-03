@@ -3,6 +3,7 @@ import { getJwt, getName } from "../_actions/cookie";
 import CardSearch from "../components/cardsSearch";
 import Topbare from "../components/topbare";
 export default async function MyProducts() {
+  
   class item {
     _id: string;
     img: string;

@@ -23,20 +23,16 @@ export default function searchable() {
   const router = useRouter();
 
   function pushRoutToAll() {
-    router.push("/Search/" + input + "/" + location);
+    router.push("/Search/" + input );
   }
 
   const [input, setInput] = useState("");
-  const [location, setLocation] = useState("");
 
   function typing(event: any) {
     setInput(event.target.value);
   }
 
-  function typingLocation(event: any) {
-    setLocation(event.target.value);
-  }
-
+ 
   function searchbareIcon() {
     TakeOneThing = true;
 
@@ -56,7 +52,7 @@ export default function searchable() {
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
     };
-  }, [input, location]);
+  }, [input]);
 
   const searchUrl = useParams<{ slug: string }>();
 

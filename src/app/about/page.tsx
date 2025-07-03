@@ -1,4 +1,3 @@
-//import React, { useState, useEffect } form 'react'
 import Footer from "../components/footer";
 import Topbare from "../components/topbare";
 export default async function about() {

@@ -4,9 +4,6 @@ import { checkIfLogIn, getName } from "../_actions/cookie";
 export default async function Topbare() {
   let logedIN = await checkIfLogIn();
   let name = await getName();
-
-  
-
   return (
     <div className="h-50 md:h-24   bg-topbare relative">
       <Link href="/">

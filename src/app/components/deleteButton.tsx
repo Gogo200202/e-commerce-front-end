@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 export default function DeleteButton(props: any) {
 
-  async function DeleteButton() {
+  async function DeleteButtonFunction() {
     try {
       const myHeaders = new Headers();
       myHeaders.append("gfg_token_header_key", props.Jwt);
@@ -37,7 +37,7 @@ export default function DeleteButton(props: any) {
     <>
       {props.IsYours ? (
         <div className="bg-transparent hover:bg-white font-semibold hover:text-white  border border-white hover:border-transparent rounded">
-          <button  onClick={DeleteButton} ><img src="/svg/trash-can.svg" alt="like" /></button>
+          <button  onClick={DeleteButtonFunction} ><img src="/svg/trash-can.svg" alt="like" /></button>
         </div>
       ) : (
         <div></div>

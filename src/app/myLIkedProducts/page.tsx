@@ -1,5 +1,5 @@
 
-import { getJwt, getName } from "../_actions/cookie";
+import { getJwt } from "../_actions/cookie";
 import CardSearch from "../components/cardsSearch";
 import Topbare from "../components/topbare";
 export default async function myLikedProducts() {

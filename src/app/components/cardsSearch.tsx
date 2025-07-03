@@ -3,7 +3,6 @@ interface item {
   _id: number;
   img: string;
   name: string;
-  description: string;
   price:string;
 }
 export default async function CardSearch(props: item[]) {
