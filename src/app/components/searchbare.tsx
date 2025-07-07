@@ -62,7 +62,7 @@ export default function searchable() {
   const [location, setLocation] = useState("");
 
   function pushRoutToAll() {
-    router.push("/Search/" + input+"/"+category+"/"+location);
+    router.push("/Search/t=" + input + "/c=" + category + "/l=" + location);
   }
 
   function AddCategory(event: any) {
@@ -112,10 +112,15 @@ export default function searchable() {
   if (!isEmpty(searchUrl)) {
     if (TakeOneThing) {
       TakeOneThing = false;
-      let realUrl = decodeURIComponent(searchUrl.slug[0]);
+      let itemName = decodeURIComponent(searchUrl.slug[0]).slice(2);
+      let itemCategory = decodeURIComponent(searchUrl.slug[1]).slice(2);
+      let itemLocation = decodeURIComponent(searchUrl.slug[2]).slice(2);
+
       const pathname = usePathname();
       if (!pathname.startsWith("/offers")) {
-        setInput(realUrl);
+        setInput(itemName);
+        setCategory(itemCategory)
+        setLocation(itemLocation);
       }
     }
   }
@@ -164,6 +169,7 @@ export default function searchable() {
             <div className="invisible absolute  z-50 flex  flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
               <input
                 onChange={typingLocation}
+                 defaultValue={location}
                 className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                 placeholder="Населено място..."
               />

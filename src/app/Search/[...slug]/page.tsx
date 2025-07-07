@@ -15,15 +15,22 @@ export default async function Search({ params }) {
   let obgParams = await params;
 
   let searchUrl = decodeURIComponent(obgParams.slug);
+  let nameOfProduct = decodeURIComponent(obgParams.slug[0]).slice(2);
+  let itemCategory = decodeURIComponent(obgParams.slug[1]).slice(2);
+  let itemLocation = decodeURIComponent(obgParams.slug[2]).slice(2);
 
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: searchUrl }),
+    body: JSON.stringify({
+      nameOfProduct: nameOfProduct,
+      itemCategory: itemCategory,
+      itemLocation: itemLocation,
+    }),
   };
 
   const response = await fetch(
-    "http://localhost:8080/getByName/",
+    "http://localhost:8080/getItemsByParams/",
     requestOptions
   );
 
