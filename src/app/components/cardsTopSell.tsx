@@ -12,7 +12,7 @@ export default async function Cards(props: item[]) {
 
   return (
     <div>
-      <div className=" text-center text-5xl">Най-новите предложения</div>
+      <div className=" text-center text-5xl">Най-популярните предложения</div>
 
       <div className="grid h-auto grid-cols-1 lg:grid-cols-3 place-items-center gap-4">
         {newitems.map((post: item) => (

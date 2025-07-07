@@ -36,13 +36,13 @@ const [pageCount, setPageCount] = useState(1);
   function BackItems() {
    
    let prevStartInd=startingIndex-8;
-   console.log(prevStartInd)
+  
    let prevEndIndex=endIndex-8;
-   console.log(prevEndIndex)
+
     setItems(items.slice(prevStartInd, prevEndIndex));
    let prevPage=page-8;
     setPage(prevPage);
-    console.log(prevPage);
+   
     setStartingIndex(prevStartInd);
     setEndIndex(prevEndIndex);
     let nextPageCount=pageCount-1;

@@ -14,6 +14,8 @@ export default async function Offers({ params }: { params: { slug: string } }) {
   let description;
   let phone;
   let price;
+  let category;
+  let location;
 
   try {
     const requestOptions = {
@@ -37,6 +39,8 @@ export default async function Offers({ params }: { params: { slug: string } }) {
     description = data.description;
     phone = data.phone;
     price = data.price;
+    category=data.category;
+    location=data.location;
   } catch (error: any) {
     console.error(error.message);
   }
@@ -121,7 +125,10 @@ export default async function Offers({ params }: { params: { slug: string } }) {
         <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
           <div className="border-b border-gray-200 pb-6">
             <p className="text-sm leading-none text-gray-600 dark:text-gray-300 ">
-              sloji kategoriq
+              {category}
+            </p>
+            <p className=" mt-3.5 leading-none text-gray-600 dark:text-gray-300 ">
+              {location}
             </p>
             <h1 className="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 dark:text-white mt-2">
               {name}
@@ -129,7 +136,7 @@ export default async function Offers({ params }: { params: { slug: string } }) {
           </div>
           <div className="py-4 border-b border-gray-200 flex items-center justify-between">
             <p className="text-base leading-4 text-gray-800 dark:text-gray-300">
-              Phone
+              Телефон
             </p>
             <div className="flex items-center justify-center">
               <p className="text-sm leading-none text-gray-600 dark:text-gray-300">
@@ -139,7 +146,7 @@ export default async function Offers({ params }: { params: { slug: string } }) {
           </div>
           <div className="py-4 border-b border-gray-200 flex items-center justify-between">
             <p className="text-base leading-4 text-gray-800 dark:text-gray-300">
-              Price
+              Цена
             </p>
             <div className="flex items-center justify-center">
               <p className="text-sm leading-none text-gray-600 dark:text-gray-300 mr-3">
@@ -149,7 +156,10 @@ export default async function Offers({ params }: { params: { slug: string } }) {
           </div>
 
           <div>
+
+            Описание 
             <p className="xl:pr-48 text-base lg:leading-tight leading-normal text-gray-600 dark:text-gray-300 mt-7">
+
               {description}
             </p>
           </div>

@@ -10,19 +10,26 @@ class img {
   data: any;
 }
 export default function AddProduct() {
-  const [Imgs, setImgs] = useState<img[]>([
-    new img(),
-  ]);
+  const [Imgs, setImgs] = useState<img[]>([new img()]);
   const [description, setDescription] = useState<String>();
   const [name, setName] = useState<string>();
   const [phoneNumber, setPhoneNumber] = useState<string>();
   const [price, setPrice] = useState<string>();
+  const [category, setCategory] = useState<string>("Електроника");
+  const [location, setLocation] = useState<string>();
 
   function AddPrice(event: any) {
     var input = event.target.value;
 
     setPrice(input);
   }
+
+  function AddLocation(event: any) {
+    var input = event.target.value;
+
+    setLocation(input);
+  }
+
   function AddProductName(event: any) {
     var input = event.target.value;
 
@@ -37,6 +44,11 @@ export default function AddProduct() {
   function AddPhoneNumber(event: any) {
     var input = event.target.value;
     setPhoneNumber(input);
+  }
+  function AddCategory(event: any) {
+    var input = event.target.value;
+    console.log(input);
+    setCategory(input);
   }
 
   var loadFile = function (event: any) {
@@ -62,6 +74,8 @@ export default function AddProduct() {
     formData.append("Name", name as string);
     formData.append("PhoneNumber", phoneNumber as string);
     formData.append("Price", price as string);
+    formData.append("Category", category as string);
+    formData.append("Location", location as string);
     let jwt = await getJwt();
     let response = await fetch("http://localhost:8080/addItem", {
       method: "POST",
@@ -138,7 +152,34 @@ export default function AddProduct() {
                   required
                 />
               </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Категория
+                </label>
+                <select onChange={AddCategory}>
+                  <option value="Електроника">Електроника</option>
+                  <option value="Недвижими имоти">Недвижими имоти</option>
+                  <option value="Дрехи">Дрехи</option>
+                  <option value="Автомобили">Автомобили</option>
+                  <option value="Животни">Животни</option>
+                  <option value="За дома">За дома</option>
+                  <option value="Работа">Работа</option>
+                </select>
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Локация
+                </label>
+                
+                <input
+                  onChange={AddLocation}
+                  type="text"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
+                />
+              </div>
             </div>
+
             <div className=" grid md:grid-cols-4 gap-2">
               <label className="h-2/4 w-2/4">
                 <img
