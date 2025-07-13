@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
 import { getJwt, getName } from "../_actions/cookie";
 import Footer from "../components/footer";
+var towns = require("../json/towns.json");
+
 
 class img {
   preview: any =
@@ -10,7 +12,7 @@ class img {
   data: any;
 }
 export default function AddProduct() {
-  const [Imgs, setImgs] = useState<img[]>([new img()]);
+  const [Imgs, setImgs] = useState<img>(new img());
   const [description, setDescription] = useState<String>();
   const [name, setName] = useState<string>();
   const [phoneNumber, setPhoneNumber] = useState<string>();
@@ -26,7 +28,7 @@ export default function AddProduct() {
 
   function AddLocation(event: any) {
     var input = event.target.value;
-
+   console.log(input);
     setLocation(input);
   }
 
@@ -63,13 +65,13 @@ export default function AddProduct() {
     let arr = Imgs;
     arr[event.target.id] = img;
 
-    setImgs([...arr]);
+    setImgs(img);
   };
 
   async function onButtonPress(event: any) {
     event.preventDefault();
     let formData = new FormData();
-    formData.append("file", Imgs[0].data);
+    formData.append("file", Imgs.data);
     formData.append("Description", description as string);
     formData.append("Name", name as string);
     formData.append("PhoneNumber", phoneNumber as string);
@@ -170,20 +172,26 @@ export default function AddProduct() {
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                   Локация
                 </label>
-                
                 <input
-                  onChange={AddLocation}
                   type="text"
+                  list="location"
+               
+                  onChange={AddLocation}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
+                <datalist id="location">
+                  {towns.map((town:any) => (
+                    <option key={town.id} value={town.name} />
+                  ))}
+                </datalist>
               </div>
             </div>
 
             <div className=" grid md:grid-cols-4 gap-2">
               <label className="h-2/4 w-2/4">
                 <img
-                  src={Imgs[0].preview}
+                  src={Imgs.preview}
                   alt="upload icon"
                   width="512"
                   height="512"

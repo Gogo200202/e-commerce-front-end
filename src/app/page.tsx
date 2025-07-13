@@ -6,7 +6,7 @@ import Footer from "./components/footer";
 export default async function Home() {
   let frontPageCards;
   try {
-    frontPageCards = await fetch("http://localhost:8080/getAllItems");
+    frontPageCards = await fetch("http://localhost:8080/getMostLikedItems");
   } catch (e: any) {
     return <></>;
   }

@@ -2,8 +2,8 @@
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-
 import { usePathname } from "next/navigation";
+var towns = require("../json/towns.json");
 
 function isEmpty(obj: any) {
   for (const prop in obj) {
@@ -14,13 +14,7 @@ function isEmpty(obj: any) {
 
   return true;
 }
-//  <option value="Електроника">Електроника</option>
-//                   <option value="Недвижими имоти">Недвижими имоти</option>
-//                   <option value="Дрехи">Дрехи</option>
-//                   <option value="Автомобили">Автомобили</option>
-//                   <option value="Животни">Животни</option>
-//                   <option value="За дома">За дома</option>
-//                   <option value="Работа">Работа</option>
+
 const categories = [
   {
     name: "Електроника",
@@ -62,6 +56,7 @@ export default function searchable() {
   const [location, setLocation] = useState("");
 
   function pushRoutToAll() {
+    console.log(location);
     router.push("/Search/t=" + input + "/c=" + category + "/l=" + location);
   }
 
@@ -79,6 +74,7 @@ export default function searchable() {
   }
 
   function typingLocation(event: any) {
+    
     setLocation(event.target.value);
   }
 
@@ -105,7 +101,7 @@ export default function searchable() {
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
     };
-  }, [input]);
+  });
 
   const searchUrl = useParams<{ slug: string }>();
 
@@ -119,7 +115,7 @@ export default function searchable() {
       const pathname = usePathname();
       if (!pathname.startsWith("/offers")) {
         setInput(itemName);
-        setCategory(itemCategory)
+        setCategory(itemCategory);
         setLocation(itemLocation);
       }
     }
@@ -165,14 +161,19 @@ export default function searchable() {
 
         <div className="flex-none  m-0">
           <div className="group">
-            <img className=" h-16" src="/svg/location.svg" alt="location" />
+            <img className=" h-16" src="/svg/location.svg"  />
             <div className="invisible absolute  z-50 flex  flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
               <input
+              list="location"
                 onChange={typingLocation}
-                 defaultValue={location}
                 className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                 placeholder="Населено място..."
               />
+              <datalist id="location">
+                {towns.map((town: any) => (
+                  <option key={town.id} value={town.name} />
+                ))}
+              </datalist>
             </div>
           </div>
         </div>
